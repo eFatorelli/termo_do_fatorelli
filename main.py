@@ -20,7 +20,21 @@ for index, letra in enumerate(resposta):
             # Isso iguala caracteres com acento aos sem acento.
 
 # print(resposta) #Temporário, para ver se ta funcionando
-print('Digite uma palavra com 5 letras: ')
+introducao = '''Essa foi a minha tentativa de replicar (para fins de estudo) o jogo Termo.
+Espero que goste! Aqui está um breve tutorial:
+
+- Você terá 8 tentativas para acertar a palavra.
+
+- [on yellow] AMARELO [/] significa que a letra existe, mas não está na posição correta!
+
+- [on green] VERDE [/] significa que a letra está na posição correta!
+
+- Atenção, pode haver mais de uma letra igual por palavra!'''
+
+painel_intro = Panel(introducao,title='[bold underline bright_cyan]Bem vindo ao FatoTermo!',
+                     subtitle='[bold underline bright_yellow]Digite uma palavra de 5 letras para começar!',
+                     border_style= 'green')
+print(painel_intro)
 acertou = False
 qtde_tentativas = 0
 frase_vitoria = conteudo = ''
@@ -103,6 +117,7 @@ while not acertou:
 
     print(painel_termo)
     print(painel_teclado)
+console.rule(style='default')
 print(frase_vitoria)
 
 
