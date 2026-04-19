@@ -21,43 +21,53 @@ print(resposta) #Temporário, para ver se ta funcionando
 print('Digite uma palavra com 5 letras: ')
 acertou = False
 qtde_tentativas = 0
-conteudo = ''
+frase_vitoria = conteudo = ''
 teclado = '|'.join([l for l in 'qwertyuiop\nasdfghjkl\nzxcvbnm'.upper()])
 while not acertou:
     qtde_tentativas += 1
     acertou = True
 
-    while True: #Validação input 5 letras
-        tentativa = input(' → ').upper()
-        if len(tentativa) == 5:
-            break
+     #Validação input 5 letras
+    tentativa = input(' → ').upper()
+    if not len(tentativa) == 5:
+        acertou = False
+        console.clear()
         print('[bold yellow]Digite uma palavra com 5 letras!')
 
-    tentativa = [l for l in tentativa]
-    for pos_letra in range(5):
-        if tentativa[pos_letra] == resp_sem_acento[pos_letra]: #Letra na posição correta
-            tentativa[pos_letra] = f'[on dark_green]{tentativa[pos_letra]}[/]'
-
-        elif tentativa[pos_letra] in resp_sem_acento: #Letra na posição errada
-            tentativa[pos_letra] = f'[on yellow]{tentativa[pos_letra]}[/]'
-            acertou = False
-
-        else:
-            acertou = False
-    if qtde_tentativas == 1:
-        conteudo = '|'.join(tentativa)
     else:
-        conteudo += '\n' + '|'.join(tentativa)
+        tentativa = [l for l in tentativa]
+        for posicao, letra in enumerate(tentativa):
+            if letra == resp_sem_acento[posicao]: #Letra na posição correta
+                tentativa[posicao] = f'[on dark_green]{letra}[/]'
+                teclado = teclado.replace(letra.upper(),f'[on dark_green]{letra.upper()}[/]')
+
+            elif letra in resp_sem_acento: #Letra na posição errada
+                tentativa[posicao] = f'[on yellow]{letra}[/]'
+                acertou = False
+                teclado = teclado.replace(letra.upper(),f'[on yellow]{letra.upper()}[/]')
+
+            else:
+                acertou = False
+                teclado = teclado.replace(letra.upper(),f'[black]{letra.upper()}[/]')
+
+        if qtde_tentativas == 1:
+            conteudo = '|'.join(tentativa)
+            frase_vitoria = (f'[bold green]INCRÍVEL![/] Você acertou a palavra '
+                             f'[bold][underline]{termo.upper()}[/][/]'
+                             f' em [cyan]DE PRIMEIRA[/]!')
+        else:
+            conteudo += '\n' + '|'.join(tentativa)
+            frase_vitoria = (f'[bold_cyan]BOA![/] Você acertou a palavra '
+                             f'[bold][underline]{termo.upper()}[/][/]'
+                             f' em [cyan]{qtde_tentativas} tentativas[/]!')
+        console.clear()
+
     painel_termo = Panel(conteudo, width=19, height=10)
-
-    # Teclado
-
     painel_teclado = Panel(teclado, width=24, title= 'Teclado')
 
-    console.clear()
     print(painel_termo)
     print(painel_teclado)
-print(f'Você acertou em {qtde_tentativas} tentativas!')
+print(frase_vitoria)
 
 
 
