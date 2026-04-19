@@ -13,7 +13,7 @@ print('SELECIONE AS PALAVRAS VÁLIDAS:')
 for cont, palavra in enumerate(lista[inicio:]):
     contador = cont + inicio
     print(' '*10 + f'[cyan]{palavra}[/]')
-    for p in lista[contador+1:cont+10]:
+    for p in lista[contador+1:contador+10]:
         print(' '*10 + p)
     while True:
         opcao = input('Remover palavra [ S / N / FECHAR]?\n → ').upper().strip()
@@ -46,5 +46,5 @@ while True:
     else:
         print('Removendo as palavras da lista.')
         with open('termo.json','w',encoding='utf-8') as t:
-            json.dump(lista,t,ensure_ascii=False)
+            json.dump(lista,t,ensure_ascii=False, indent= 4)
         break
