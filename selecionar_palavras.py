@@ -8,6 +8,10 @@ fechar = False
 with open('termo.json','r', encoding= 'utf-8') as a:
     lista = json.load(a)
 
+for palavra in lista:
+    if len(palavra.strip()) !=5:
+        remover.append(palavra)
+
 while True:
     inicio = input('Digite as letras iniciais de onde começar:\n → ').strip().upper()
     for indice, p in enumerate(lista):
