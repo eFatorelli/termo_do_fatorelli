@@ -53,12 +53,12 @@ while not acertou:
         if qtde_tentativas == 1:
             conteudo = '|'.join(tentativa)
             frase_vitoria = (f'[bold green]INCRÍVEL![/] Você acertou a palavra '
-                             f'[bold][underline]{termo.upper()}[/][/]'
+                             f'[bold underline]{termo.upper()}[/]'
                              f' em [cyan]DE PRIMEIRA[/]!')
         else:
             conteudo += '\n' + '|'.join(tentativa)
             frase_vitoria = (f'[bold_cyan]BOA![/] Você acertou a palavra '
-                             f'[bold][underline]{termo.upper()}[/][/]'
+                             f'[bold underline]{termo.upper()}[/]'
                              f' em [cyan]{qtde_tentativas} tentativas[/]!')
         console.clear()
 
