@@ -6,7 +6,8 @@ class Quadro:
                'E': ('É', 'Ê'),
                'I': 'Í',
                'O': ('Õ', 'Ó','Ô'),
-               'U': ('Ú', 'Ü')}
+               'U': ('Ú', 'Ü'),
+               'C': 'Ç'}
 
     def __init__(self, palavra, max_tentativas, tamanho = 5):
         self.palavra = palavra
